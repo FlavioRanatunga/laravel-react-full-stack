@@ -1,0 +1,193 @@
+/* Importing a clean, modern font */
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap');
+
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body, #root, #defaultLayout, #guestLayout {
+    min-height: 100vh;
+    font-family: 'SF Pro Display', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+/* Body */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Input Fields */
+input {
+    outline: none;
+    background: #1c1c1e;
+    width: 100%;
+    border: 1px solid #3a3a3c;
+    margin: 0 0 15px;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #0a84ff;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: #0a84ff;
+    border: none;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0066cc;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-add {
+    background-color: #32d74b;
+}
+
+.btn-delete {
+    background-color: #ff453a;
+}
+
+.btn-logout {
+    background: none;
+    color: #0a84ff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: rgba(10, 132, 255, 0.1);
+}
+
+/* Text Center */
+.text-center {
+    text-align: center;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    border-bottom: 1px solid #3a3a3c;
+}
+
+table th {
+    background-color: #1c1c1e;
+    text-align: left;
+}
+
+/* Card */
+.card {
+    background-color: #1c1c1e;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Alert */
+.alert {
+    padding: 20px;
+    background-color: #ff453a;
+    color: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 100;
+    padding: 20px;
+    background-color: #32d74b;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+/* Login/Signup Forms */
+.login-signup-form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-signup-form .form {
+    width: 360px;
+    background: #1c1c1e;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.login-signup-form .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-signup-form .form .message {
+    margin: 15px 0 0;
+    color: #8e8e93;
+    font-size: 16px;
+    text-align: center;
+}
+
+.login-signup-form .form .message a {
+    color: #0a84ff;
+    text-decoration: none;
+}
+
+/* Default Layout */
+#defaultLayout {
+    display: flex;
+}
+
+#defaultLayout aside {
+    width: 240px;
+    background-color: #0a84ff;
+    padding: 20px;
+    color: #ffffff;
+}
+
+#defaultLayout aside a {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
