@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignUpRequest;
 use App\Models\User;
-use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -28,8 +28,13 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
+        Log::info('Login request received', ['request' => $request->all()]);
+
         $credentials = $request->validated();
+        Log::info('Login request validated', ['credentials' => $credentials]);
+
         if (!Auth::attempt($credentials)) {
+            Log::warning('Login attempt failed', ['credentials' => $credentials]);
             return response([
                 'message' => 'Provided email or password is incorrect'
             ], 422);
@@ -37,15 +42,27 @@ class AuthController extends Controller
 
         /** @var \App\Models\User $user */
         $user = Auth::user();
+        Log::info('User authenticated', ['user' => $user]);
+
         $token = $user->createToken('main')->plainTextToken;
+        Log::info('Token created', ['token' => $token]);
+
         return response(compact('user', 'token'));
     }
 
     public function logout(Request $request)
     {
+        Log::info('Logout request received', ['user' => $request->user()]);
+
         /** @var \App\Models\User $user */
         $user = $request->user();
-        $user->currentAccessToken()->delete();
+        if ($user) {
+            $user->currentAccessToken()->delete();
+            Log::info('User logged out', ['user' => $user]);
+        } else {
+            Log::warning('No authenticated user found for logout');
+        }
+
         return response('', 204);
     }
 }

@@ -11,8 +11,8 @@
 html, body, #root, #defaultLayout, #guestLayout {
     min-height: 100vh;
     font-family: 'SF Pro Display', sans-serif;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -28,36 +28,37 @@ body {
 /* Input Fields */
 input {
     outline: none;
-    background: #1c1c1e;
+    background: #1e1e1e;
     width: 100%;
-    border: 1px solid #3a3a3c;
+    border: 1px solid #333;
     margin: 0 0 15px;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 16px;
-    color: #ffffff;
+    color: #e0e0e0;
     transition: border-color 0.3s;
 }
 
 input:focus {
-    border-color: #0a84ff;
+    border-color: #007bff;
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
-    background: #0a84ff;
+    background: #007bff;
     border: none;
-    color: #ffffff;
+    color: #fff;
     padding: 12px 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn:hover {
-    background-color: #0066cc;
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .btn-block {
@@ -65,24 +66,24 @@ input:focus {
 }
 
 .btn-add {
-    background-color: #32d74b;
+    background-color: #28a745;
 }
 
 .btn-delete {
-    background-color: #ff453a;
+    background-color: #dc3545;
 }
 
 .btn-logout {
     background: none;
-    color: #0a84ff;
+    color: #007bff;
     padding: 12px 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .btn-logout:hover {
-    background-color: rgba(10, 132, 255, 0.1);
+    background-color: rgba(0, 123, 255, 0.1);
 }
 
 /* Text Center */
@@ -99,18 +100,18 @@ table {
 
 table th, table td {
     padding: 12px;
-    border-bottom: 1px solid #3a3a3c;
+    border-bottom: 1px solid #333;
 }
 
 table th {
-    background-color: #1c1c1e;
+    background-color: #1e1e1e;
     text-align: left;
 }
 
 /* Card */
 .card {
-    background-color: #1c1c1e;
-    border-radius: 10px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     padding: 20px;
     margin-bottom: 20px;
@@ -119,9 +120,9 @@ table th {
 /* Alert */
 .alert {
     padding: 20px;
-    background-color: #ff453a;
-    color: #ffffff;
-    border-radius: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 8px;
     margin-bottom: 20px;
 }
 
@@ -132,9 +133,9 @@ table th {
     bottom: 20px;
     z-index: 100;
     padding: 20px;
-    background-color: #32d74b;
-    color: #ffffff;
-    border-radius: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 8px;
 }
 
 /* Login/Signup Forms */
@@ -147,9 +148,9 @@ table th {
 
 .login-signup-form .form {
     width: 360px;
-    background: #1c1c1e;
+    background: #1e1e1e;
     padding: 40px;
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -161,13 +162,13 @@ table th {
 
 .login-signup-form .form .message {
     margin: 15px 0 0;
-    color: #8e8e93;
+    color: #6c757d;
     font-size: 16px;
     text-align: center;
 }
 
 .login-signup-form .form .message a {
-    color: #0a84ff;
+    color: #007bff;
     text-decoration: none;
 }
 
@@ -178,16 +179,76 @@ table th {
 
 #defaultLayout aside {
     width: 240px;
-    background-color: #0a84ff;
+    background-color: #1e1e1e;
     padding: 20px;
-    color: #ffffff;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #defaultLayout aside a {
     display: block;
     padding: 12px 20px;
-    border-radius: 10px;
-    color: #ffffff;
+    border-radius: 8px;
+    color: #e0e0e0;
     text-decoration: none;
     transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+#defaultLayout aside a:hover {
+    background-color: #333;
+}
+
+#defaultLayout .content {
+    flex: 1;
+    padding: 20px;
+}
+
+#defaultLayout .content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#defaultLayout .content .header-left h1 {
+    margin: 0;
+}
+
+#defaultLayout .content .header-right {
+    display: flex;
+    align-items: center;
+}
+
+#defaultLayout .content .header-right span {
+    margin-right: 20px;
+}
+
+#defaultLayout .content .ribbon {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#defaultLayout .content .ribbon .ribbon-content {
+    display: flex;
+    align-items: center;
+}
+
+#defaultLayout .content .ribbon .ribbon-content p {
+    margin-right: 20px;
+}
+
+#defaultLayout .content main {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }

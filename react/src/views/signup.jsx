@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useStateContext } from "../contexts/contextProvider";
 import axiosClient from "../axios-client";
 
@@ -9,6 +9,7 @@ export default function Signup() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
+    const [errors, setErrors] = useState(null);
 
     const { setUser, setToken } = useStateContext();
 
@@ -31,16 +32,11 @@ export default function Signup() {
                 setToken(data.token);
             })
             .catch(err => {
-                if (err.response) {
-                    console.log("Error Response Status:", err.response.status);  // Log the error status
-                    console.log("Error Response Data:", err.response.data);  // Log the full error response
-
-                    if (err.response.status === 422) {
-                        console.log("Validation Errors:", err.response.data.errors);  // Log validation errors
-                    }
-                } else {
-                    console.error("Request Error:", err);  // Log any unexpected errors outside the response
+                const response = err.response;
+                if (response && response.status ==422) {
+                    setErrors(response.data.errors)
                 }
+                    
             });
     };
 
@@ -49,6 +45,13 @@ export default function Signup() {
             <h1 className="title">
                 Create an account
             </h1>
+            {errors && <div className="alert">
+                {Object.keys(errors).map(key => (
+                    <p key={key}>{errors[key][0]}</p>
+                ))}
+            </div>
+            }
+
             <input ref={nameRef} placeholder="Full Name"></input>
             <input ref={emailRef} type="email" placeholder="Email Address"></input>
             <input ref={passwordRef} type="password" placeholder="Password"></input>
