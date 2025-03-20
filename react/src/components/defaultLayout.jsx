@@ -5,7 +5,7 @@ import { Navigate, Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 
 export default function DefaultLayout() {
-    const { user, token, setUser, setToken } = useStateContext();
+    const { user, token, notification, setUser, setToken } = useStateContext();
 
     const onLogout = (ev) => {
         ev.preventDefault();
@@ -60,6 +60,12 @@ export default function DefaultLayout() {
                     <Outlet />
                 </main>
             </div>
+
+            {notification &&
+                <div className="notification">
+                    {notification}
+                </div>
+            }
         </div>
     );
 }

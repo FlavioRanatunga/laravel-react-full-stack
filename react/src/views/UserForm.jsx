@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import axiosClient from "../axios-client";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import { useStateContext } from "../contexts/contextProvider";
 
 export default function UserForm() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState(null);
+    const {setNotification} = useStateContext();
     const [user, setUser] = useState({
         id: null,
         name: '',
@@ -44,6 +46,7 @@ export default function UserForm() {
             .then(({ data }) => {
                 setLoading(false);
                 console.log('User saved:', data);
+                setNotifcation('User saved successfully');
                 navigate('/users');
             })
             .catch((error) => {
